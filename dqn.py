@@ -143,14 +143,6 @@ class Agent:
         self.duration += 1
 
         if stop:
-            if self.t >= 20000:
-                stats = [self.reward_sum, self.q_sum / float(self.duration),
-                         self.duration, self.loss_sum / (float(self.duration) / float(4))]
-                for i in range(len(stats)):
-                    self.sess.run(self.update_ops[i], feed_dict={
-                        self.summary_placeholders[i]: float(stats[i])
-                    })
-
             print(self.episode + 1, self.t, self.duration, self.eps,
                   self.reward_sum, self.q_sum / float(self.duration),
                   self.loss_sum / (float(self.duration) / float(4)))
